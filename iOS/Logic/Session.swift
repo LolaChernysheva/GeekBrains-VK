@@ -10,7 +10,7 @@ import Foundation
 
 class Session {
     
-    var userId: Int = 0
+    var userId: String = ""
     var token: String = ""
     static let shared = Session()
     private init() {

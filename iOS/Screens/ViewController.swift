@@ -8,10 +8,17 @@
 
 import UIKit
 import WebKit
+import Alamofire
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var webview: WKWebView!
+    {
+        didSet{
+            webview.navigationDelegate = self
+        }
+    }
+
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var login: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -47,9 +54,7 @@ class ViewController: UIViewController {
         ]
         
         let request = URLRequest(url: urlComponents.url!)
-        
         webview.load(request)
-        
     }
     
     @objc func hideKeyboard() {
@@ -74,8 +79,7 @@ extension ViewController: WKNavigationDelegate {
         guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment  else {
             decisionHandler(.allow)
             return
-        }
-        
+            }
         let params = fragment
             .components(separatedBy: "&")
             .map { $0.components(separatedBy: "=") }
@@ -85,70 +89,12 @@ extension ViewController: WKNavigationDelegate {
                 let value = param[1]
                 dict[key] = value
                 return dict
-        }
-        
+            }
         let token = params["access_token"]
-        
         
       Session.shared.token = token ?? ""
         print(token)
-       //получение списка друзей
-      /*  let urlFriends = URL(string: "https://api.vk.com/method/friends.get?access_token="+Session.shared.token+"&fields=nickname&v=5.103")
-        let session = URLSession.shared
-        let task = session.dataTask(with: urlFriends!) { (data, response, error) in
-        let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
-                    print(json)
-        }
-        task.resume()
-        
-      
-        
-        let urlGroups = URL(string: "https://api.vk.com/method/groups.get?access_token="+Session.shared.token+"&extended=1&fields=name&v=5.103")
-        let session = URLSession.shared
-        let task = session.dataTask(with: urlGroups!) { (data, response, error) in
-        let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
-                    print(json)
-        }
-        task.resume()
-        
+        VKApi.getUserGroups()
         decisionHandler(.cancel)
-    
-         */
-        let urlSearchGroups = URL(string: "https://api.vk.com/method/groups.search?access_token="+Session.shared.token+"&q=a&type=group&v=5.103")
-        let sessionSearchGroups = URLSession.shared
-        let taskSearchGroup = sessionSearchGroups.dataTask(with: urlSearchGroups!) { (data, response, error) in
-            let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
-                        print(json)
-            }
-        taskSearchGroup.resume()
-            
-            decisionHandler(.cancel)
-        }
-
+    }
 }
-        
-
-/*
-        let configuration = URLSessionConfiguration.default
-
-        let session =  URLSession(configuration: configuration)
-
-        var urlConstructor = URLComponents()
-
-            urlConstructor.scheme = "https"
-            urlConstructor.host = "api.vk.com"
-            urlConstructor.path = "/method/friends"
-            urlConstructor.queryItems = [
-                    URLQueryItem(name: "access_token", value: Session.shared.token),
-                    URLQueryItem(name: "fields", value: "nickname"),
-                    URLQueryItem(name: "v", value: "5.103")
-                ]
-                
-            let task = session.dataTask(with: urlConstructor.url!) { (data, response, error) in
-                let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
-                print(json ?? "default value")
-                }
-                task.resume()
-            }
-            */
-
