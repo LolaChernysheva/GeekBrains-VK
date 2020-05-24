@@ -5,7 +5,15 @@ class GroupsVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        groupList = GroupDataBase.shared.userGroups
+        //groupList = GroupDataBase.shared.userGroups
+        VKApi.getUserGroups(){ [weak self] remoteGroupList in
+            //print(remoteGroupList)
+            for remoteGroup in remoteGroupList {
+                self?.groupList.append(Group(name: remoteGroup.name, numberOfUsers: remoteGroup.members_count ?? 0, groupAvatar: remoteGroup.photo_50))
+            }
+            self?.tableView.reloadData()
+           // print(self?.groupList)
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -20,6 +28,8 @@ class GroupsVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupTemplate", for: indexPath) as! GroupCell
         let gottenGroup = groupList[indexPath.row]
         cell.groupname.text = gottenGroup.name
+        guard let url = URL(string: gottenGroup.groupAvatar) else {return cell}
+        cell.groupavatar.af.setImage(withURL: url)
         return cell
     }
     

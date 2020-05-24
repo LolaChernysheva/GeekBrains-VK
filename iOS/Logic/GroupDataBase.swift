@@ -10,17 +10,17 @@ import Foundation
 
 class GroupDataBase {
     var userGroups: [Group] = [
-            Group(name: "GeekBrains", numberOfUsers: 5000),
-            Group(name: "PiterOnline", numberOfUsers: 2500),
-            Group(name: "Picabu", numberOfUsers: 1500)
+            Group(name: "GeekBrains", numberOfUsers: 5000, groupAvatar: ""),
+            Group(name: "PiterOnline", numberOfUsers: 2500, groupAvatar: ""),
+            Group(name: "Picabu", numberOfUsers: 1500, groupAvatar: "")
     ]
     var searchGroups: [Group] = [
-            Group(name: "Java", numberOfUsers: 1),
-            Group(name: "HTML", numberOfUsers: 1),
-            Group(name: "CSS", numberOfUsers: 1),
-            Group(name: "Eerl Grey", numberOfUsers: 1),
-            Group(name: "Milky Olong", numberOfUsers: 1),
-            Group(name: "RunPotatos!", numberOfUsers: 1),
+        Group(name: "Java", numberOfUsers: 1, groupAvatar: ""),
+            Group(name: "HTML", numberOfUsers: 1, groupAvatar: ""),
+            Group(name: "CSS", numberOfUsers: 1,  groupAvatar: ""),
+            Group(name: "Eerl Grey", numberOfUsers: 1,  groupAvatar: ""),
+            Group(name: "Milky Olong", numberOfUsers: 1,  groupAvatar: ""),
+            Group(name: "RunPotatos!", numberOfUsers: 1,  groupAvatar: ""),
     ]
     
     //создадим singleton

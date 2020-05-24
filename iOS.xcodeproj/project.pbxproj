@@ -10,6 +10,10 @@
 		A71E245E350F8EDA83064737 /* Pods_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F521679020D7CA2DE785A1 /* Pods_iOS.framework */; };
 		D3A438BA2472AB65009DCE53 /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A438B92472AB65009DCE53 /* VKApi.swift */; };
 		D3A438BC2472AF05009DCE53 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A438BB2472AF05009DCE53 /* WebKit.framework */; };
+		D3A438BE2476CA54009DCE53 /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A438BD2476CA54009DCE53 /* Responses.swift */; };
+		D3A438C024771B90009DCE53 /* ResponseFriendsGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A438BF24771B90009DCE53 /* ResponseFriendsGet.swift */; };
+		D3A438C224771FE4009DCE53 /* ResponseGetUserGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A438C124771FE4009DCE53 /* ResponseGetUserGroups.swift */; };
+		D3A438C42477236F009DCE53 /* ResponseGetUserPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A438C32477236F009DCE53 /* ResponseGetUserPhotos.swift */; };
 		F37DA50D23C1062300B2210B /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DA50C23C1062300B2210B /* AvatarView.swift */; };
 		F37DA51323C1335900B2210B /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DA51223C1335900B2210B /* LikeButton.swift */; };
 		F37DA51C23C3469300B2210B /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F37DA51A23C3469300B2210B /* NewsCell.xib */; };
@@ -63,6 +67,10 @@
 		BEB0225A8986116B4BF04338 /* Pods-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS.debug.xcconfig"; path = "Target Support Files/Pods-iOS/Pods-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D3A438B92472AB65009DCE53 /* VKApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
 		D3A438BB2472AF05009DCE53 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		D3A438BD2476CA54009DCE53 /* Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responses.swift; sourceTree = "<group>"; };
+		D3A438BF24771B90009DCE53 /* ResponseFriendsGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseFriendsGet.swift; sourceTree = "<group>"; };
+		D3A438C124771FE4009DCE53 /* ResponseGetUserGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGetUserGroups.swift; sourceTree = "<group>"; };
+		D3A438C32477236F009DCE53 /* ResponseGetUserPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGetUserPhotos.swift; sourceTree = "<group>"; };
 		E03F2EF49D522478FEC52474 /* Pods-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS.release.xcconfig"; path = "Target Support Files/Pods-iOS/Pods-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		F37DA50C23C1062300B2210B /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		F37DA51223C1335900B2210B /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
@@ -173,6 +181,10 @@
 				D3A438B92472AB65009DCE53 /* VKApi.swift */,
 				F37DA53223CB810900B2210B /* GroupDataBase.swift */,
 				F37DA53423CB8CEB00B2210B /* Session.swift */,
+				D3A438BD2476CA54009DCE53 /* Responses.swift */,
+				D3A438BF24771B90009DCE53 /* ResponseFriendsGet.swift */,
+				D3A438C124771FE4009DCE53 /* ResponseGetUserGroups.swift */,
+				D3A438C32477236F009DCE53 /* ResponseGetUserPhotos.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -443,11 +455,13 @@
 				F37DA52F23C6651900B2210B /* SwipeCloseNavigationControllerViewController.swift in Sources */,
 				F37DA52223C3660700B2210B /* News.swift in Sources */,
 				F37DA52D23C661AC00B2210B /* SwipeCloseInteractiveTransition.swift in Sources */,
+				D3A438C42477236F009DCE53 /* ResponseGetUserPhotos.swift in Sources */,
 				F37DA52423C6581000B2210B /* RotateVC.swift in Sources */,
 				F37DA50D23C1062300B2210B /* AvatarView.swift in Sources */,
 				F3DCD7A92392AAA400685EA4 /* ViewController.swift in Sources */,
 				F37DA53323CB810900B2210B /* GroupDataBase.swift in Sources */,
 				D3A438BA2472AB65009DCE53 /* VKApi.swift in Sources */,
+				D3A438BE2476CA54009DCE53 /* Responses.swift in Sources */,
 				F3937B3623C0B036005859A2 /* SearchGroupTableVC.swift in Sources */,
 				F3DCD7D923930ECB00685EA4 /* FriendCell.swift in Sources */,
 				F3937B3223B298D7005859A2 /* Group.swift in Sources */,
@@ -455,11 +469,13 @@
 				F3DCD7D52392E2AB00685EA4 /* FriendsVC.swift in Sources */,
 				F37DA52B23C65EE600B2210B /* RotatePopAnimator.swift in Sources */,
 				F37DA52723C658B600B2210B /* RotatePushAnimator.swift in Sources */,
+				D3A438C224771FE4009DCE53 /* ResponseGetUserGroups.swift in Sources */,
 				F3937B3023B298B7005859A2 /* Friend.swift in Sources */,
 				F37DA51D23C3469300B2210B /* NewsCell.swift in Sources */,
 				F3DCD7A72392AAA400685EA4 /* SceneDelegate.swift in Sources */,
 				F37DA53523CB8CEB00B2210B /* Session.swift in Sources */,
 				F3DCD7DD2393181400685EA4 /* PhotoController.swift in Sources */,
+				D3A438C024771B90009DCE53 /* ResponseFriendsGet.swift in Sources */,
 				F3DCD7D72392E2E700685EA4 /* GroupsVC.swift in Sources */,
 				F37DA52023C3495A00B2210B /* NewsVC.swift in Sources */,
 			);

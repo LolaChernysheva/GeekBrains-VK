@@ -92,9 +92,14 @@ extension ViewController: WKNavigationDelegate {
             }
         let token = params["access_token"]
         
-      Session.shared.token = token ?? ""
+        Session.shared.token = token ?? ""
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)  //получили объект сториборда
+        let tabBarVC = storyboard.instantiateViewController(identifier: "TabBarVC")//получили экран, на который необходимо перейти, по идентификатору
+        self.navigationController?.pushViewController(tabBarVC, animated: true)//вызвали переход
         print(token)
-        VKApi.getUserGroups()
+        //VKApi.getUserPhotos()
+        
+        
         decisionHandler(.cancel)
     }
 }
