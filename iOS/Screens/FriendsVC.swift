@@ -2,6 +2,7 @@
 
 import UIKit
 import AlamofireImage
+import RealmSwift
 //структура для работы с секциями, для дальнейшей сортировки по алфавиту списка друзей
 struct Section <T> {
     var title: String

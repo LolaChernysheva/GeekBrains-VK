@@ -9,8 +9,10 @@
 import Foundation
 import Alamofire
 import AlamofireImage
+import RealmSwift
 
 class VKApi {
+    
     static let session = Session.shared
     static func getFriends(completion: @escaping ([FriendsList]) -> Void) {
         let accessParametres = ["access_token": session.token]
@@ -25,12 +27,16 @@ class VKApi {
             URLQueryItem(name: "fields", value: "first_name,last_name,domain,sex,city,photo_50"),
             URLQueryItem(name: "v", value: "5.103")
         ]
-        AF.request(urlFriendsList, method: .get, parameters: accessParametres).responseJSON{ response
+        AF.request(urlFriendsList, method: .get, parameters: accessParametres).responseJSON{  response
             in
             guard let data = response.data else {return}
             do {
-                let friends = try JSONDecoder().decode(VKResponseFriendsGet.self, from: data)
-                completion(friends.response.items)
+                let vkResponseFriendsGet = try JSONDecoder().decode(VKResponseFriendsGet.self, from: data)
+                
+                self.saveFriendsData(vkResponseFriendsGet.response.items)
+                completion(vkResponseFriendsGet.response.items)
+                
+                
             } catch {
                 print(error)
             }
@@ -38,6 +44,7 @@ class VKApi {
            //print(response.value ?? "")
         }
     }
+    
     static func getUserGroups(completion: @escaping ([GroupsList]) -> Void) {
         //requesting a list of user's groups
         let accessParametres = ["access_token": session.token]
@@ -104,6 +111,7 @@ class VKApi {
             guard let data = response.data else {return}
             do {
                 let groups = try JSONDecoder().decode(VKResponseGetUserPhotos.self, from: data)
+                
                 print(groups)
             } catch {
                 print(error)
@@ -111,6 +119,28 @@ class VKApi {
         print(response.value ?? "")
         }
     }
+    //сохранение погодных данных в Realm
+   static func saveFriendsData(_ friends: [FriendsList]) {
+
+    // обработка исключений при работе с хранилищем
+            do {
+    // получаем доступ к хранилищу
+                let realm = try Realm()
+                
+    // начинаем изменять хранилище
+                realm.beginWrite()
+                
+    // кладем все объекты класса погоды в хранилище
+                realm.add(friends)
+                
+    // завершаем изменения хранилища
+                try realm.commitWrite()
+            } catch {
+    // если произошла ошибка, выводим ее в консоль
+                print(error)
+            }
+    }
+
 }
 
 

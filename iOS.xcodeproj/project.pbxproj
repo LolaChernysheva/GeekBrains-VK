@@ -14,6 +14,8 @@
 		D3A438C024771B90009DCE53 /* ResponseFriendsGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A438BF24771B90009DCE53 /* ResponseFriendsGet.swift */; };
 		D3A438C224771FE4009DCE53 /* ResponseGetUserGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A438C124771FE4009DCE53 /* ResponseGetUserGroups.swift */; };
 		D3A438C42477236F009DCE53 /* ResponseGetUserPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A438C32477236F009DCE53 /* ResponseGetUserPhotos.swift */; };
+		D3D978FA247AF03B00C5612A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D978F9247AF03B00C5612A /* Realm.framework */; };
+		D3D978FC247AF03B00C5612A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D978FB247AF03B00C5612A /* RealmSwift.framework */; };
 		F37DA50D23C1062300B2210B /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DA50C23C1062300B2210B /* AvatarView.swift */; };
 		F37DA51323C1335900B2210B /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DA51223C1335900B2210B /* LikeButton.swift */; };
 		F37DA51C23C3469300B2210B /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F37DA51A23C3469300B2210B /* NewsCell.xib */; };
@@ -71,6 +73,8 @@
 		D3A438BF24771B90009DCE53 /* ResponseFriendsGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseFriendsGet.swift; sourceTree = "<group>"; };
 		D3A438C124771FE4009DCE53 /* ResponseGetUserGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGetUserGroups.swift; sourceTree = "<group>"; };
 		D3A438C32477236F009DCE53 /* ResponseGetUserPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseGetUserPhotos.swift; sourceTree = "<group>"; };
+		D3D978F9247AF03B00C5612A /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3D978FB247AF03B00C5612A /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E03F2EF49D522478FEC52474 /* Pods-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS.release.xcconfig"; path = "Target Support Files/Pods-iOS/Pods-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		F37DA50C23C1062300B2210B /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		F37DA51223C1335900B2210B /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3D978FA247AF03B00C5612A /* Realm.framework in Frameworks */,
+				D3D978FC247AF03B00C5612A /* RealmSwift.framework in Frameworks */,
 				D3A438BC2472AF05009DCE53 /* WebKit.framework in Frameworks */,
 				A71E245E350F8EDA83064737 /* Pods_iOS.framework in Frameworks */,
 			);
@@ -148,6 +154,8 @@
 		85625D6022125B28B644CAC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3D978F9247AF03B00C5612A /* Realm.framework */,
+				D3D978FB247AF03B00C5612A /* RealmSwift.framework */,
 				D3A438BB2472AF05009DCE53 /* WebKit.framework */,
 				38F521679020D7CA2DE785A1 /* Pods_iOS.framework */,
 			);

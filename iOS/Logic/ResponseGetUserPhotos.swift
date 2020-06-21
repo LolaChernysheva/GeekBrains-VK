@@ -7,26 +7,27 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct VKResponseGetUserPhotos: Decodable {
-    let response: ResponseGetPhoto
+class VKResponseGetUserPhotos: Decodable {
+   let response: ResponseGetPhoto
 }
-struct ResponseGetPhoto: Decodable {
+class ResponseGetPhoto: Decodable {
     let items: [PhotoList]
     let text: String!
 }
-struct PhotoList: Decodable {
-    let album_id: Int
-    let date: Int
-    let id: Int
-    let owner_id: Int
-    let has_tags: Bool
-    let post_id: Int
-    let sizes: [Sizes]
+class PhotoList: Object, Decodable {
+  @objc dynamic  var album_id: Int
+  @objc dynamic  var date: Int
+  @objc dynamic  var id: Int
+   @objc dynamic var owner_id: Int
+   @objc dynamic var has_tags: Bool
+   @objc dynamic var post_id: Int
+   @objc dynamic var sizes: [Sizes]
 }
-struct Sizes: Decodable {
-    let height: Int
-    let url: String
-    let type: String
-    let width: Int
+class Sizes: Object,  Decodable {
+   @objc dynamic var height: Int
+   @objc dynamic var url: String
+   @objc dynamic var type: String
+   @objc dynamic var width: Int
 }
