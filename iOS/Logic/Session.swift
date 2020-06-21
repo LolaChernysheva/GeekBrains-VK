@@ -12,6 +12,7 @@ class Session {
     
     var userId: String = ""
     var token: String = ""
+    //создаем объект класса Singleton
     static let shared = Session()
     private init() {
     }
