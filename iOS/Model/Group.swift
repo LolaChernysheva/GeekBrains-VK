@@ -9,4 +9,5 @@ import Foundation
 struct Group {
     var name: String
     var numberOfUsers: Int
+    var groupAvatar: String
 }

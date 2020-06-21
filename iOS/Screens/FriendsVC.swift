@@ -1,6 +1,8 @@
 
 
 import UIKit
+import AlamofireImage
+import RealmSwift
 //структура для работы с секциями, для дальнейшей сортировки по алфавиту списка друзей
 struct Section <T> {
     var title: String
@@ -12,23 +14,26 @@ class FriendsVC: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     var friendList = ["Lolita", "Pavel", "Svetlana", "Olga", "Anna"]
-    var friendListObj = [Friend(name: "Lolita", avatar: "avatar"),
-                       Friend(name: "Pavel", avatar: "2"),
-                        Friend(name: "Svetlana", avatar: "3"),
-                        Friend(name: "Olga", avatar: "4"),
-                        Friend(name: "Anna", avatar: "5")]
+    var friendListObj:[Friend] = []
     var friendSection = [Section<Friend>]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         searchBar.delegate = self
-        //инициализруем массив, который надо сортировать, сортировка по каждому элементу массива, по имени, по первому символу
-        let friendDictionary = Dictionary.init(grouping: friendListObj) {
-            $0.name.prefix(1)
+        VKApi.getFriends() { [weak self] friendList in
+            print(friendList)
+            for remoteFriend in friendList {
+                self?.friendListObj.append(Friend(name: "\(remoteFriend.first_name) \(remoteFriend.last_name)", avatar: remoteFriend.photo_50))
+            }
+            //инициализруем массив, который надо сортировать, сортировка по каждому элементу массива, по имени, по первому символу
+            let friendDictionary = Dictionary.init(grouping: self?.friendListObj ?? []) {
+                $0.name.prefix(1)
+            }
+            self?.friendSection = friendDictionary.map {Section (title: String($0.key), items: $0.value)
+            }
+            self?.tableView.reloadData()
         }
-        friendSection = friendDictionary.map {Section (title: String($0.key), items: $0.value)}
-
+        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int { //сколько групп в списке
@@ -43,7 +48,7 @@ class FriendsVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTemplate", for: indexPath) as! FriendCell   //извлекает шаблон ячейки
         let friend = friendListObj[indexPath.row]
         cell.username.text = friendSection[indexPath.section].items[indexPath.row].name
-        cell.shadowAvatar.image.image = UIImage(named: friendSection[indexPath.section].items[indexPath.row].avatarPath)
+        cell.shadowAvatar.image.af.setImage(withURL: URL(string: friendSection[indexPath.section].items[indexPath.row].avatarPath)!)
         return cell
     }
     
